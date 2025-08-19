@@ -1,6 +1,6 @@
 ---
   - name: Create a Hyper-V VM
-    hosts: localhost
+    hosts: Hyper-V_Host
     gather_facts: no
     tasks:
       - name: Create new VM
