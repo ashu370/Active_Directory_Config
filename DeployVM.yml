@@ -1,0 +1,20 @@
+---
+  - name: Create a Hyper-V VM
+    hosts: localhost
+    gather_facts: no
+    tasks:
+      - name: Create new VM
+        community.windows.win_hyperv_vm:
+          name: "TestVM"
+          state: present
+          generation: 2
+          memory: 4GB
+          processors: 2
+          vswitch: "Internal" # Or your specific virtual switch name
+          disks:
+            - path: "H:\\Virtual Machine\\TestVM"
+              size_gb: 100
+              type: Dynamic
+          iso_path: "F:\\Operating System\\Windows\\en-us_windows_server_2022_updated_july_2025_x64_dvd_f3e39b78.iso" # Path to your OS ISO
+          autostartaction: Start
+# Add other desired parameters like network adapters, checkpoints, etc.
